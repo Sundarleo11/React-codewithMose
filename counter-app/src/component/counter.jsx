@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class counter extends Component {
     state = {
-        count: 0
+        // count: 0
+        count: this.props.value
     }
 
     style = {
@@ -23,14 +24,18 @@ class counter extends Component {
     }
 
     render() {
-        return <React.Fragment>
+        let classes = "badge m-2 badge-";
+        classes += this.state.count === 0 ? "warning" : "primary";
+        console.log("props", this.props);
+        return <div>
+
 
             {/* <span>{this.state.count}</span>
                <h1>Helloworld</h1>
             */}
-            <span className='badge badge-primary m-2'>{this.formatecount()}</span>
+            <span className={classes}>{this.formatecount()}</span>
             <button onClick={() => this.handleincrement()} className='btn btn-secondary  btn-sm'>Increament</button>
-        </React.Fragment>
+        </div>
     }
 
     formatecount() {
