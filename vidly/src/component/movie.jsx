@@ -12,28 +12,39 @@ class Movies extends Component {
 
     }
     render() {
-        return <table className="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Stock</th>
-                    <th>Rate</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {this.state.movies.map(movies => <tr key={movies._id}>
-                    <td>{movies.title}</td>
-                    <td>{movies.genre.name}</td>
-                    <td>{movies.numberInStock}</td>
-                    <td>{movies.dailyRentalRate}</td>
-                    <td><button onClick={() => this.handleDelete(movies)} className="btn btn-danger btn sm">Delete</button></td>
-                </tr>)}
+        const { length: count } = this.state.movies;
+        if (count === 0)
+            return <p>There is no movie in the DB</p>
 
-            </tbody>
 
-        </table>
+        return <div>
+
+            <p> showing {count} in the movie</p>
+            <table className="table">
+
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Stock</th>
+                        <th>Rate</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.movies.map(movies => <tr key={movies._id}>
+                        <td>{movies.title}</td>
+                        <td>{movies.genre.name}</td>
+                        <td>{movies.numberInStock}</td>
+                        <td>{movies.dailyRentalRate}</td>
+                        <td><button onClick={() => this.handleDelete(movies)} className="btn btn-danger btn sm">Delete</button></td>
+                    </tr>)}
+
+                </tbody>
+
+            </table>
+        </div>
+
     }
 }
 
