@@ -18,6 +18,7 @@ class counter extends Component {
 
     handleincrement = () => {
         // console.log("click event", this);
+        // console.log(e);
         this.setState({ count: this.state.count + 1 });
     }
 
@@ -28,7 +29,7 @@ class counter extends Component {
                <h1>Helloworld</h1>
             */}
             <span className='badge badge-primary m-2'>{this.formatecount()}</span>
-            <button onClick={this.handleincrement} className='btn btn-secondary  btn-sm'>Increament</button>
+            <button onClick={() => this.handleincrement()} className='btn btn-secondary  btn-sm'>Increament</button>
         </React.Fragment>
     }
 
